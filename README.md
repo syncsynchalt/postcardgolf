@@ -11,7 +11,7 @@ Type `make`.
 The encoded string at the end of the `make` output can be fed to the following program:
 
 ```
-echo ... | \
+echo '...' | \
   perl -ne '@_=map{ord($_)-33}/\S/g;while(@_)
    {$a=pop@_;$a<32&&$a!=10&&($l=$a,$a=pop@_);
    $l=print chr($a)x$l}'

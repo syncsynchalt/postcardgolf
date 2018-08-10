@@ -38,5 +38,5 @@ func main() {
 		c += byte(shiftnum)
 		out.WriteByte(c)
 	}
-    out.Flush()
+	out.Flush()
 }

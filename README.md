@@ -2,7 +2,13 @@
 
 Utilities to help me create some code golf'd ASCII art with a simple RLE compression.
 
-The output of this can be fed to the following program:
+## Usage
+
+Edit `input.txt`, and adjust the hex values as necessary.
+
+Type `make`.
+
+The encoded string at the end of the `make` output can be fed to the following program:
 
 ```
 echo ... | \

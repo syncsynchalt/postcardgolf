@@ -1,0 +1,5 @@
+#!/bin/sh
+num=$1
+perl -ne '@_=map{ord($_)-'$num'}/\S/g;while(@_)
+   {s/^/_/;$a=pop@_;$a<32&&$a!=10&&($l=$a,$a=pop@_);
+   $l=print chr($a)x$l}'

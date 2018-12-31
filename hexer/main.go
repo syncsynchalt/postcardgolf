@@ -52,7 +52,12 @@ func main() {
 		words := strings.Fields(line)
 		output := make([]byte, 0, 100)
 		for _, word := range words {
-			num, err := strconv.ParseInt(word, 16, 8)
+			var num int64
+			if len(word) > 1 && word[0] == '\'' {
+				num, err = strconv.ParseInt(word[1:], 10, 8)
+			} else {
+				num, err = strconv.ParseInt(word, 16, 8)
+			}
 			if err != nil || num < 0 || num > 255 {
 				die("Bad number %s", word)
 			}

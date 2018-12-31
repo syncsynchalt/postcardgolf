@@ -31,11 +31,17 @@ func main() {
 
 	in, out := bufio.NewReader(os.Stdin), bufio.NewWriter(os.Stdout)
 	for {
-		c, err := in.ReadByte()
+		corig, err := in.ReadByte()
 		if err == io.EOF {
 			break
 		}
-		c += byte(shiftnum)
+		c := corig + byte(shiftnum)
+		if c == 0x27 {
+			panic(fmt.Sprintf("would print apostrophe (was %02x)", corig))
+		}
+		if c >= 0x7f {
+			panic(fmt.Sprintf("would print high byte %02x (was %02x)", c, corig))
+		}
 		out.WriteByte(c)
 	}
 	out.Flush()
